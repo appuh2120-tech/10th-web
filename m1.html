@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>10th Grade Notes - Karnataka (PDF Library)</title>
+  <style>
+    body{
+      margin:0;
+      font-family: Inter, Arial, sans-serif;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      color:#0f172a;
+    }
+    .container{
+      max-width:400px;
+      margin:80px auto;
+      padding:24px;
+      background:#fff;
+      border-radius:16px;
+      box-shadow:0 6px 20px rgba(0,0,0,0.2);
+    }
+    h2{text-align:center;margin-bottom:20px;color:#1e3a8a}
+    input{
+      width:100%;
+      padding:10px;
+      margin:8px 0;
+      border:2px solid #93c5fd;
+      border-radius:8px;
+    }
+    button{
+      width:100%;
+      padding:10px;
+      margin-top:10px;
+      background:#e91e63;
+      color:white;
+      border:none;
+      border-radius:8px;
+      cursor:pointer;
+    }
+    button:hover{background:#c2185b}
+    #libraryPage{display:none;padding:24px}
+    header h1{font-size:22px;color:white;text-align:center}
+    section{
+      background:#fff;
+      border-radius:16px;
+      padding:20px;
+      margin-top:20px;
+      box-shadow:0 4px 12px rgba(0,0,0,0.15);
+    }
+    section h2{color:#1e3a8a;margin-bottom:12px}
+    ul{list-style:none;padding:0}
+    li{margin:10px 0}
+    a{
+      text-decoration:none;
+      color:#2575fc;
+      font-weight:bold;
+    }
+    a:hover{color:#6a11cb}
+    .logout{background:#f44336;margin-top:20px}
+  </style>
+</head>
+<body>
+  <!-- LOGIN PAGE -->
+  <div id="loginPage" class="container">
+    <h2>Login to Notes Library</h2>
+    <input type="text" id="username" placeholder="Enter Username" />
+    <input type="password" id="password" placeholder="Enter Password" />
+    <button onclick="login()">Login</button>
+    <p style="font-size:13px;color:gray">Hint: Username = <b>student</b>, Password = <b>1234</b></p>
+  </div>
+
+  <!-- LIBRARY PAGE -->
+  <div id="libraryPage">
+    <header>
+      <h1>📘 10th Standard Notes Library</h1>
+    </header>
+    <section>
+      <h2>Available Notes (PDF)</h2>
+      <ul>
+        <li><a href="c:\Users\ADMIN\AppData\Local\Packages\5319275A.WhatsAppDesktop_cv1g1gvanyjgm\TempState\791D3A0048B9C200DCECA07F99DDD178\10th Kan FL  Part-1 2025-26.pdf" target="_blank">Kannada Notes</a></li>
+        <li><a href="c:\Users\ADMIN\AppData\Local\Packages\5319275A.WhatsAppDesktop_cv1g1gvanyjgm\TempState\F38FEF4C0E4988792723C29A0BD3CA98\10th Hindi TL Part- 1  2025-26.pdf" target="_blank">Hindi Notes</a></li>
+        <li><a href="c:\Users\ADMIN\AppData\Local\Packages\5319275A.WhatsAppDesktop_cv1g1gvanyjgm\TempState\D4EA5DACFFF2D8A35C0952291779290D\10th Eng SL Part - 1 2025-26.pdf" target="_blank">English Notes</a></li>
+        <li><a href="c:\Users\ADMIN\AppData\Local\Packages\5319275A.WhatsAppDesktop_cv1g1gvanyjgm\TempState\03793EF7D06FFD63D34ADE9D091F1CED\10th Kan Maths Part- 1 2025-26.pdf" target="_blank">Mathematics Notes</a></li>
+        <li><a href="c:\Users\ADMIN\AppData\Local\Packages\5319275A.WhatsAppDesktop_cv1g1gvanyjgm\TempState\BF5D232E6C54A84B97769A91ADB1642F\10 Science -All in one-DDPI OFFICE HASSAN.pdf" target="_blank">Science Notes</a></li>
+        <li><a href="c:\Users\ADMIN\AppData\Local\Packages\5319275A.WhatsAppDesktop_cv1g1gvanyjgm\TempState\5D7009220A974E94404889274D3A9553\media_to_upload1750315140.pdf" target="_blank">Social Science Notes</a></li>
+      </ul>
+      <button class="logout" onclick="logout()">Logout</button>
+    </section>
+  </div>
+
+  <script>
+    function login(){
+      const user = document.getElementById("username").value.trim();
+      const pass = document.getElementById("password").value.trim();
+
+      if(user === "student" && pass === "1234"){
+        localStorage.setItem("loggedIn","yes");
+        showLibrary();
+      }else{
+        alert("❌ Invalid login! Try again.");
+      }
+    }
+
+    function showLibrary(){
+      document.getElementById("loginPage").style.display="none";
+      document.getElementById("libraryPage").style.display="block";
+    }
+
+    function logout(){
+      localStorage.removeItem("loggedIn");
+      document.getElementById("loginPage").style.display="block";
+      document.getElementById("libraryPage").style.display="none";
+    }
+
+    // auto check login
+    if(localStorage.getItem("loggedIn")==="yes"){
+      showLibrary();
+    }
+  </script>
+</body>
+</html>
